@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
-class ModelUtil {
+class GeminiAPI {
   GenerativeModel loadModel() {
     final apiKey = dotenv.env['API_KEY'];
     if (apiKey == null) {
@@ -14,9 +14,11 @@ class ModelUtil {
     return GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey ?? "");
   }
 
-  Future<String?> responseFromTextOnly(String prompt) async {
+  Future<String?> responseFromTextOnly(String prompt,
+      {GenerationConfig? genarationConfig}) async {
     final content = [Content.text(prompt)];
-    final response = await loadModel().generateContent(content);
+    final response = await loadModel()
+        .generateContent(content, generationConfig: genarationConfig);
     return response.text;
   }
 
