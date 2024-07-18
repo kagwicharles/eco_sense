@@ -1,5 +1,7 @@
 import 'package:ecosense/src/repository/prompt_repository.dart';
+import 'package:ecosense/src/screens/views/climate_action_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class DashboardScreen extends StatefulWidget {
   DashboardScreen({super.key});
@@ -9,8 +11,9 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  final List<Widget> destinations = [];
+  List<String>? actionPoints = [];
   final _promptRepo = PromptRepository();
+  bool loading = true;
 
   @override
   void initState() {
@@ -19,15 +22,68 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   getActionPoints() async {
-    var actionsPoints = await _promptRepo.generateClimateActionIdeas();
-    debugPrint("action points --->$actionsPoints");
+    var actions = await _promptRepo.generateClimateActionIdeas();
+    debugPrint("action points --->$actionPoints");
+    setState(() {
+      actionPoints = actions;
+      loading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
         child: Scaffold(
-      body: Text(""),
+      body: loading
+          ? const SpinKitDualRing(
+              color: Colors.yellow,
+            )
+          : actionPoints != null
+              ? SingleChildScrollView(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Easy actions users can take to reduce their carbon footprint",
+                        style: TextStyle(
+                            fontSize: 28, fontStyle: FontStyle.italic),
+                      ),
+                      const SizedBox(
+                        height: 44,
+                      ),
+                      ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: actionPoints?.length ?? 0,
+                        itemBuilder: (context, index) =>
+                            ClimateActionView(action: actionPoints![index]),
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const SizedBox(
+                          height: 24,
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              : const Text("Empty!"),
+      bottomNavigationBar: BottomAppBar(
+        elevation: 4,
+        height: 58,
+        color: const Color(0xff411900),
+        child: Row(
+          children: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.chat,
+                  color: Colors.white,
+                ))
+          ],
+        ),
+      ),
+      backgroundColor: Colors.yellow[50],
     ));
   }
 }
