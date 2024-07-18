@@ -7,14 +7,18 @@ class PromptRepository {
   final geminiAPI = GeminiAPI();
 
   Future<List<String>?> generateClimateActionIdeas() async {
+    List<String> actionPoints = [];
     var res = await geminiAPI.responseFromTextOnly(
         "suggest 5 easy actions users can take to reduce their carbon footprint",
         genarationConfig: GenerationConfig(
             responseMimeType: 'application/json',
             responseSchema: Schema.array(items: Schema.string())));
     if (res != null) {
-      return jsonDecode(res);
+      var actions = jsonDecode(res);
+      for (var action in actions) {
+        actionPoints.add(action);
+      }
     }
-    return [];
+    return actionPoints;
   }
 }
