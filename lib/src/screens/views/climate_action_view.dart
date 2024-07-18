@@ -10,7 +10,7 @@ class ClimateActionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 18),
       decoration: BoxDecoration(
         color: Colors.yellow,
         borderRadius: BorderRadius.circular(6),
@@ -22,28 +22,22 @@ class ClimateActionView extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            action,
-            style: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 14,
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton(
-              onPressed: () {
-                context.navigate(LearnMoreScreen(promptKeyWords: action));
-              },
-              child: const Text("Learn More"),
-            ),
-          )
-        ],
-      ),
+      child: InkWell(
+          onTap: () {
+            context.navigate(LearnMoreScreen(promptKeyWords: action));
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                action,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16),
+              ),
+            ],
+          )),
     );
   }
 }
