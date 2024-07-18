@@ -18,9 +18,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int value = 1;
 
   List<Widget> navDestinations = [
-    Icon(Icons.book),
-    Icon(Icons.home),
-    Icon(Icons.person)
+    const Icon(
+      Icons.book,
+      color: Colors.white,
+    ),
+    const Icon(
+      Icons.home,
+      color: Colors.white,
+    ),
+    const Icon(
+      Icons.person,
+      color: Colors.white,
+    )
   ];
 
   @override
@@ -87,8 +96,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               : const Text("Empty!"),
       bottomNavigationBar: CurvedNavigationBar(
           index: value,
-          backgroundColor: Colors.transparent,
           color: const Color(0xff411900),
+          backgroundColor: Colors.transparent,
           items: navDestinations,
           onTap: onDestinationSelected),
     ));
