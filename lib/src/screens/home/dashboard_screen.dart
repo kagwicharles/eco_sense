@@ -45,12 +45,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Container(
                         padding: const EdgeInsets.symmetric(horizontal: 14),
                         child: const Text(
-                          "Easy actions you can take to reduce their carbon footprint",
+                          "Easy actions you can take to reduce your carbon footprint and make Earth a better place",
                           style: TextStyle(
                               fontSize: 28, fontStyle: FontStyle.italic),
                         )),
                     const SizedBox(
-                      height: 44,
+                      height: 24,
                     ),
                     Expanded(
                         child: SingleChildScrollView(

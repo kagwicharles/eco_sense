@@ -18,7 +18,7 @@ class ClimateActionView extends StatelessWidget {
           BoxShadow(
             color: Color(0xff411900),
             blurRadius: 2,
-            offset: Offset(4, 6), // Shadow position
+            offset: Offset(4, 4), // Shadow position
           ),
         ],
       ),
