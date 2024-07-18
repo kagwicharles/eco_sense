@@ -10,7 +10,6 @@ class ClimateActionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 99,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.yellow,
@@ -31,9 +30,11 @@ class ClimateActionView extends StatelessWidget {
             style: const TextStyle(
                 color: Colors.black, fontWeight: FontWeight.bold),
           ),
-          const Spacer(),
+          const SizedBox(
+            height: 14,
+          ),
           Align(
-            alignment: Alignment.centerLeft,
+            alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: () {
                 context.navigate(LearnMoreScreen(promptKeyWords: action));
