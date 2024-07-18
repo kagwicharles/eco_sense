@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:ecosense/src/repository/prompt_repository.dart';
 import 'package:ecosense/src/screens/views/climate_action_view.dart';
 import 'package:ecosense/src/screens/views/loading_view.dart';
@@ -14,6 +15,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
   List<String>? actionPoints = [];
   final _promptRepo = PromptRepository();
   bool loading = true;
+  int value = 1;
+
+  List<Widget> navDestinations = [
+    Icon(Icons.book),
+    Icon(Icons.home),
+    Icon(Icons.person)
+  ];
 
   @override
   void initState() {
@@ -55,7 +63,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Expanded(
                         child: SingleChildScrollView(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 14),
+                          horizontal: 14, vertical: 14),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -77,21 +85,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ],
                 )
               : const Text("Empty!"),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 4,
-        height: 58,
-        color: const Color(0xff411900),
-        child: Row(
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.chat,
-                  color: Colors.white,
-                ))
-          ],
-        ),
-      ),
+      bottomNavigationBar: CurvedNavigationBar(
+          index: value,
+          backgroundColor: Colors.transparent,
+          color: const Color(0xff411900),
+          items: navDestinations,
+          onTap: onDestinationSelected),
     ));
+  }
+
+  onDestinationSelected(int index) {
+    setState(() {
+      value = index;
+    });
   }
 }
