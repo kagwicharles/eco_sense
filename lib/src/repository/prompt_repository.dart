@@ -26,7 +26,7 @@ class PromptRepository {
     var res = await geminiAPI.responseFromTextOnly(
         "explain how $keywords would help reduce my carbon footprint",
         genarationConfig: GenerationConfig(
-            responseMimeType: 'string', responseSchema: Schema.string()));
+            responseMimeType: 'text/plain', responseSchema: Schema.string()));
     if (res != null) {
       return res;
     }

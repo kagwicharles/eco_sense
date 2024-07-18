@@ -19,9 +19,10 @@ class _LearnMoreScreenState extends State<LearnMoreScreen> {
   @override
   void initState() {
     super.initState();
+    getGeminiResponse();
   }
 
-  getActionPoints() async {
+  getGeminiResponse() async {
     var response =
         await _promptRepo.learnMoreAboutClimateAction(widget.promptKeyWords);
     debugPrint("action points --->$response");

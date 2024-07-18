@@ -37,33 +37,44 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: loading
           ? const LoadingView()
           : actionPoints != null
-              ? SingleChildScrollView(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Easy actions you can take to reduce their carbon footprint",
-                        style: TextStyle(
-                            fontSize: 28, fontStyle: FontStyle.italic),
+              ? Column(
+                  children: [
+                    const SizedBox(
+                      height: 28,
+                    ),
+                    Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 14),
+                        child: const Text(
+                          "Easy actions you can take to reduce their carbon footprint",
+                          style: TextStyle(
+                              fontSize: 28, fontStyle: FontStyle.italic),
+                        )),
+                    const SizedBox(
+                      height: 44,
+                    ),
+                    Expanded(
+                        child: SingleChildScrollView(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: actionPoints?.length ?? 0,
+                            itemBuilder: (context, index) =>
+                                ClimateActionView(action: actionPoints![index]),
+                            separatorBuilder:
+                                (BuildContext context, int index) =>
+                                    const SizedBox(
+                              height: 24,
+                            ),
+                          )
+                        ],
                       ),
-                      const SizedBox(
-                        height: 44,
-                      ),
-                      ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: actionPoints?.length ?? 0,
-                        itemBuilder: (context, index) =>
-                            ClimateActionView(action: actionPoints![index]),
-                        separatorBuilder: (BuildContext context, int index) =>
-                            const SizedBox(
-                          height: 24,
-                        ),
-                      )
-                    ],
-                  ),
+                    ))
+                  ],
                 )
               : const Text("Empty!"),
       bottomNavigationBar: BottomAppBar(
@@ -81,7 +92,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
       ),
-      backgroundColor: Colors.yellow[50],
     ));
   }
 }
