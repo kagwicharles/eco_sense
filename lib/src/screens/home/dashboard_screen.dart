@@ -1,10 +1,10 @@
 import 'package:ecosense/src/repository/prompt_repository.dart';
 import 'package:ecosense/src/screens/views/climate_action_view.dart';
+import 'package:ecosense/src/screens/views/loading_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class DashboardScreen extends StatefulWidget {
-  DashboardScreen({super.key});
+  const DashboardScreen({super.key});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -35,9 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return SafeArea(
         child: Scaffold(
       body: loading
-          ? const SpinKitDualRing(
-              color: Colors.yellow,
-            )
+          ? const LoadingView()
           : actionPoints != null
               ? SingleChildScrollView(
                   padding:
@@ -46,7 +44,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        "Easy actions users can take to reduce their carbon footprint",
+                        "Easy actions you can take to reduce their carbon footprint",
                         style: TextStyle(
                             fontSize: 28, fontStyle: FontStyle.italic),
                       ),

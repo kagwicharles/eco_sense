@@ -21,4 +21,15 @@ class PromptRepository {
     }
     return actionPoints;
   }
+
+  Future<String?> learnMoreAboutClimateAction(String keywords) async {
+    var res = await geminiAPI.responseFromTextOnly(
+        "explain how $keywords would help reduce my carbon footprint",
+        genarationConfig: GenerationConfig(
+            responseMimeType: 'string', responseSchema: Schema.string()));
+    if (res != null) {
+      return res;
+    }
+    return null;
+  }
 }

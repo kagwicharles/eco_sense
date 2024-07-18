@@ -1,3 +1,5 @@
+import 'package:ecosense/src/screens/home/learnmore_screen.dart';
+import 'package:ecosense/src/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class ClimateActionView extends StatelessWidget {
@@ -13,7 +15,7 @@ class ClimateActionView extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.yellow,
         borderRadius: BorderRadius.circular(6),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Color(0xff411900),
             blurRadius: 2,
@@ -26,7 +28,18 @@ class ClimateActionView extends StatelessWidget {
         children: [
           Text(
             action,
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          const Spacer(),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(
+              onPressed: () {
+                context.navigate(LearnMoreScreen(promptKeyWords: action));
+              },
+              child: const Text("Learn More"),
+            ),
           )
         ],
       ),
