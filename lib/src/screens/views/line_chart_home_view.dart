@@ -298,9 +298,9 @@ class LineChartView extends StatefulWidget {
 class LineChartViewState extends State<LineChartView> {
   late bool isShowingMainData;
   List<Widget> rangeButtons = [
-    RangeButton(title: "Weekly"),
-    RangeButton(title: "Monthly"),
-    RangeButton(title: "Yearly")
+    const RangeButton(title: "Weekly"),
+    const RangeButton(title: "Monthly"),
+    const RangeButton(title: "Yearly")
   ];
 
   @override
@@ -360,15 +360,15 @@ class RangeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.all(4),
+        margin: const EdgeInsets.all(4),
         width: 100,
         child: ElevatedButton(
           onPressed: () {},
-          child: Text(title),
           style: ButtonStyle(
-              elevation: WidgetStatePropertyAll(0),
+              elevation: const WidgetStatePropertyAll(0),
               shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4)))),
+          child: Text(title),
         ));
   }
 }
