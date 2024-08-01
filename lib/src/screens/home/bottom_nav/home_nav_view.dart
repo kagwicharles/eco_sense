@@ -1,4 +1,4 @@
-import 'package:ecosense/src/screens/views/pie_chart_home_view.dart';
+import 'package:ecosense/src/screens/views/line_chart_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -54,7 +54,7 @@ class _HomeNavViewState extends State<HomeNavView> {
                               const SizedBox(
                                 height: 28,
                               ),
-                              Row(
+                              const Row(
                                 children: [
                                   Text("Total Carbon Footprint"),
                                   SizedBox(
@@ -67,10 +67,10 @@ class _HomeNavViewState extends State<HomeNavView> {
                                   )
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 12,
                               ),
-                              PieChartHomeView(),
+                              const LineChartView(),
                               Container(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 14),
@@ -82,7 +82,8 @@ class _HomeNavViewState extends State<HomeNavView> {
                                 height: 12,
                               ),
                               Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 18),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 18),
                                   child: ListView.separated(
                                     shrinkWrap: true,
                                     physics:
