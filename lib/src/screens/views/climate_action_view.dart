@@ -14,13 +14,6 @@ class ClimateActionView extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.yellow,
         borderRadius: BorderRadius.circular(6),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0xff411900),
-            blurRadius: 2,
-            offset: Offset(4, 4), // Shadow position
-          ),
-        ],
       ),
       child: InkWell(
           onTap: () {
@@ -31,10 +24,7 @@ class ClimateActionView extends StatelessWidget {
             children: [
               Text(
                 action,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
+                style: const TextStyle(color: Colors.black, fontSize: 16),
               ),
             ],
           )),
