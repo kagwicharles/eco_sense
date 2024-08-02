@@ -156,12 +156,12 @@ class _HomeNavViewState extends State<HomeNavView> {
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 3,
-                                        childAspectRatio: 1.5),
+                                        childAspectRatio: 1.2),
                                 children: const [
                                   MoreActionView(
                                       color: Colors.green,
                                       icon: Icons.map,
-                                      title: "Heat Maps")
+                                      title: "HeatMap \nAnalysis")
                                 ],
                               )
                             ]))));
