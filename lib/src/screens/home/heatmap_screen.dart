@@ -20,19 +20,20 @@ class _HeatmapScreenState extends State<HeatmapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: BlocListener<HeatMapBloc, HeatMapState>(
-            listener: (context, state) {},
-            child: BlocBuilder<HeatMapBloc, HeatMapState>(
-                builder: (context, state) {
-              if (state is HeatMapLoadingState) const LoadingView();
-              if (state is HeatMapLoadingState) {
-                return const LoadingView();
-              }
-              if (state is HeatMapLoadedState) {
-                return const Text("HeatMAP");
-              }
-              return const SizedBox();
-            })));
+    return Scaffold(
+        body: SafeArea(
+            child: BlocListener<HeatMapBloc, HeatMapState>(
+                listener: (context, state) {},
+                child: BlocBuilder<HeatMapBloc, HeatMapState>(
+                    builder: (context, state) {
+                  if (state is HeatMapLoadingState) const LoadingView();
+                  if (state is HeatMapLoadingState) {
+                    return const LoadingView();
+                  }
+                  if (state is HeatMapLoadedState) {
+                    return const Text("HeatMAP");
+                  }
+                  return const SizedBox();
+                }))));
   }
 }

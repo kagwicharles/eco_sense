@@ -1,6 +1,8 @@
+import 'package:ecosense/src/screens/home/heatmap_screen.dart';
 import 'package:ecosense/src/screens/views/bar_chart_view.dart';
 import 'package:ecosense/src/screens/views/more_action_view.dart';
 import 'package:ecosense/src/screens/views/stat_item_view.dart';
+import 'package:ecosense/src/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -157,8 +159,11 @@ class _HomeNavViewState extends State<HomeNavView> {
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 3,
                                         childAspectRatio: 1.2),
-                                children: const [
+                                children: [
                                   MoreActionView(
+                                      function: () {
+                                        context.navigate(const HeatmapScreen());
+                                      },
                                       color: Colors.green,
                                       icon: Icons.map,
                                       title: "HeatMap \nAnalysis"),
