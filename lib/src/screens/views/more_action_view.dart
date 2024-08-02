@@ -14,21 +14,22 @@ class MoreActionView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(255, 255, 255, 1),
-          border: Border.all(color: Colors.grey[400]!),
-          borderRadius: BorderRadius.circular(8)),
+          color: Colors.green, borderRadius: BorderRadius.circular(8)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             icon,
             size: 34,
-            color: color,
+            color: Colors.white,
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
-          Text(title)
+          Text(
+            title,
+            style: const TextStyle(color: Colors.white),
+          )
         ],
       ),
     );

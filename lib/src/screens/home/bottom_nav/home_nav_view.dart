@@ -150,7 +150,8 @@ class _HomeNavViewState extends State<HomeNavView> {
                               ),
                               GridView(
                                 shrinkWrap: true,
-                                padding: EdgeInsets.symmetric(horizontal: 14),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 14),
                                 physics: const NeverScrollableScrollPhysics(),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
