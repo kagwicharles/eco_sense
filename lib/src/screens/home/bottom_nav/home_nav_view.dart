@@ -1,4 +1,6 @@
-import 'package:ecosense/src/screens/views/line_chart_home_view.dart';
+import 'package:ecosense/src/screens/views/bar_chart_view.dart';
+import 'package:ecosense/src/screens/views/stat_item_view.dart';
+import 'package:ecosense/src/utils/extenstions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,9 +49,20 @@ class _HomeNavViewState extends State<HomeNavView> {
                               const SizedBox(
                                 height: 28,
                               ),
-                              const Text(
-                                "Welcome Back, Charles!",
-                                style: TextStyle(fontSize: 24),
+                              const Row(
+                                children: [
+                                  Text(
+                                    "Welcome back,",
+                                    style: TextStyle(fontSize: 24),
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  Text(
+                                    "Charles!",
+                                    style: TextStyle(fontSize: 24),
+                                  )
+                                ],
                               ),
                               const SizedBox(
                                 height: 28,
@@ -68,18 +81,47 @@ class _HomeNavViewState extends State<HomeNavView> {
                                 ],
                               ),
                               const SizedBox(
-                                height: 12,
+                                height: 18,
                               ),
-                              const LineChartView(),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 14, vertical: 4),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border:
+                                        Border.all(color: Colors.grey[400]!)),
+                                child: const Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    StatItemView(
+                                        title: "Food", icon: Icons.food_bank),
+                                    StatItemView(
+                                        title: "Transport",
+                                        icon: Icons.bus_alert),
+                                    StatItemView(
+                                        title: "Food", icon: Icons.food_bank)
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 18,
+                              ),
+                              const BarChartHomeView(),
+                              const SizedBox(
+                                height: 18,
+                              ),
                               Container(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 14),
                                   child: const Text(
-                                    "Recommendations",
-                                    style: TextStyle(fontSize: 14),
+                                    "Suggestions",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
                                   )),
                               const SizedBox(
-                                height: 12,
+                                height: 18,
                               ),
                               Container(
                                   margin: const EdgeInsets.symmetric(
@@ -97,7 +139,10 @@ class _HomeNavViewState extends State<HomeNavView> {
                                             const SizedBox(
                                       height: 12,
                                     ),
-                                  ))
+                                  )),
+                              const SizedBox(
+                                height: 18,
+                              ),
                             ]))));
           }
           if (state is HomeLoadingFailedState) Text(state.errorMessage);

@@ -1,4 +1,6 @@
+import 'package:ecosense/src/screens/home/bottom_nav/actions_nav_view.dart';
 import 'package:ecosense/src/screens/home/bottom_nav/home_nav_view.dart';
+import 'package:ecosense/src/screens/home/bottom_nav/more_nav_view.dart';
 import 'package:ecosense/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -13,24 +15,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int value = 1;
 
   List<Widget> navDestinations = [
-    const Icon(
-      Icons.book,
-      color: Colors.white,
+    const NavigationDestination(
+      icon: const Icon(
+        Icons.edit,
+        color: Colors.white,
+      ),
+      label: "Actions",
     ),
-    const Icon(
-      Icons.home,
-      color: Colors.white,
+    const NavigationDestination(
+      icon: Icon(
+        Icons.home,
+        color: Colors.white,
+      ),
+      label: "Home",
     ),
-    const Icon(
-      Icons.person,
-      color: Colors.white,
+    const NavigationDestination(
+      icon: Icon(
+        Icons.info,
+        color: Colors.white,
+      ),
+      label: "Info",
     )
   ];
 
   List<Widget> navScreens = [
+    const ActionsNavView(),
     const HomeNavView(),
-    const HomeNavView(),
-    const HomeNavView()
+    const MoreNavView()
   ];
 
   @override
@@ -41,16 +52,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
           bottomNavigationBar: NavigationBar(
             selectedIndex: value,
             backgroundColor: AppTheme.primaryColor,
-            height: 54,
-            onDestinationSelected: onDestinationSelected,
+            indicatorColor: AppTheme.secondaryColor,
+            onDestinationSelected: (int index) {
+              setState(() {
+                value = index;
+              });
+            },
             destinations: navDestinations,
           )),
     );
-  }
-
-  onDestinationSelected(int index) {
-    setState(() {
-      value = index;
-    });
   }
 }

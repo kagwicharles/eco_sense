@@ -10,7 +10,7 @@ class ClimateActionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 18),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       decoration: BoxDecoration(
         color: Colors.yellow,
         borderRadius: BorderRadius.circular(6),
@@ -24,7 +24,6 @@ class ClimateActionView extends StatelessWidget {
             children: [
               Text(
                 action,
-                style: const TextStyle(color: Colors.black, fontSize: 16),
               ),
             ],
           )),
