@@ -55,12 +55,14 @@ class _HomeNavViewState extends State<HomeNavView> {
                                     "Welcome back,",
                                     style: TextStyle(fontSize: 24),
                                   ),
-                                  const SizedBox(
+                                  SizedBox(
                                     width: 8,
                                   ),
                                   Text(
                                     "Charles!",
-                                    style: TextStyle(fontSize: 24),
+                                    style: TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w600),
                                   )
                                 ],
                               ),
@@ -69,7 +71,7 @@ class _HomeNavViewState extends State<HomeNavView> {
                               ),
                               const Row(
                                 children: [
-                                  Text("Total Carbon Footprint"),
+                                  Text("Your Carbon Footprint"),
                                   SizedBox(
                                     width: 4,
                                   ),
@@ -84,12 +86,15 @@ class _HomeNavViewState extends State<HomeNavView> {
                                 height: 18,
                               ),
                               Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 14),
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 14, vertical: 4),
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     border:
-                                        Border.all(color: Colors.grey[400]!)),
+                                        Border.all(color: Colors.grey[400]!),
+                                    borderRadius: BorderRadius.circular(8)),
                                 child: const Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
@@ -100,7 +105,7 @@ class _HomeNavViewState extends State<HomeNavView> {
                                         title: "Transport",
                                         icon: Icons.bus_alert),
                                     StatItemView(
-                                        title: "Food", icon: Icons.food_bank)
+                                        title: "Power", icon: Icons.power)
                                   ],
                                 ),
                               ),
