@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class MapApiRepository {
-  final String apiKey = "AIzaSyBs_B61ZJMPu6RpBm388GhkWkZj8jayZfM";
+  final String apiKey = dotenv.env['MAP_API_KEY']!;
   final dio = Dio();
 
   getHeatMap() async {
