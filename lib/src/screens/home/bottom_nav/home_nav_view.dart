@@ -1,6 +1,6 @@
 import 'package:ecosense/src/screens/views/bar_chart_view.dart';
+import 'package:ecosense/src/screens/views/more_action_view.dart';
 import 'package:ecosense/src/screens/views/stat_item_view.dart';
-import 'package:ecosense/src/utils/extenstions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -146,8 +146,23 @@ class _HomeNavViewState extends State<HomeNavView> {
                                     ),
                                   )),
                               const SizedBox(
-                                height: 18,
+                                height: 28,
                               ),
+                              GridView(
+                                shrinkWrap: true,
+                                padding: EdgeInsets.symmetric(horizontal: 14),
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        childAspectRatio: 1.5),
+                                children: const [
+                                  MoreActionView(
+                                      color: Colors.green,
+                                      icon: Icons.map,
+                                      title: "Heat Maps")
+                                ],
+                              )
                             ]))));
           }
           if (state is HomeLoadingFailedState) Text(state.errorMessage);
