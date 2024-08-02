@@ -161,7 +161,7 @@ class _HomeNavViewState extends State<HomeNavView> {
                                   MoreActionView(
                                       color: Colors.green,
                                       icon: Icons.map,
-                                      title: "HeatMap \nAnalysis")
+                                      title: "HeatMap \nAnalysis"),
                                 ],
                               )
                             ]))));
