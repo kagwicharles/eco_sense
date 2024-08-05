@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:ecosense/src/repository/map_api_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
@@ -16,8 +17,8 @@ class HeatMapBloc extends Bloc<HeatMapEvent, HeatMapState> {
         (GetHeatMapEvent event, Emitter<HeatMapState> emit) async {
       emit(HeatMapLoadingState());
       try {
-        final heatmap = await mapApiRepository.getHeatMap() ?? [];
-        if (heatmap.isEmpty) {
+        final heatmap = await mapApiRepository.getHeatMap();
+        if (heatmap == null) {
           emit(HeatMapEmptyState());
         } else {
           emit(HeatMapLoadedState(heatmap: heatmap));

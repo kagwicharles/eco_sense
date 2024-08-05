@@ -12,7 +12,7 @@ class HeatMapLoadingState extends HeatMapState {}
 
 class HeatMapLoadedState extends HeatMapState {
   const HeatMapLoadedState({required this.heatmap});
-  final List<String> heatmap;
+  final Response heatmap;
   @override
   List<Object> get props => [heatmap];
 }

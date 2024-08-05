@@ -41,135 +41,126 @@ class _HomeNavViewState extends State<HomeNavView> {
             return const LoadingView();
           }
           if (state is HomeLoadedState) {
-            return Expanded(
-                child: SingleChildScrollView(
-                    child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+            return SingleChildScrollView(
+                child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 28,
+                          ),
+                          const Row(
                             children: [
-                              const SizedBox(
-                                height: 28,
+                              Text(
+                                "Welcome back,",
+                                style: TextStyle(fontSize: 24),
                               ),
-                              const Row(
-                                children: [
-                                  Text(
-                                    "Welcome back,",
-                                    style: TextStyle(fontSize: 24),
-                                  ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  Text(
-                                    "Charles!",
-                                    style: TextStyle(
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w600),
-                                  )
-                                ],
+                              SizedBox(
+                                width: 8,
                               ),
-                              const SizedBox(
-                                height: 28,
-                              ),
-                              const Row(
-                                children: [
-                                  Text("Your Carbon Footprint"),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Text(
-                                    "40kgCO2",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 18,
-                              ),
-                              Container(
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 14),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 14, vertical: 4),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border:
-                                        Border.all(color: Colors.grey[400]!),
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    StatItemView(
-                                        title: "Food", icon: Icons.food_bank),
-                                    StatItemView(
-                                        title: "Transport",
-                                        icon: Icons.bus_alert),
-                                    StatItemView(
-                                        title: "Power", icon: Icons.power)
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 18,
-                              ),
-                              const BarChartHomeView(),
-                              const SizedBox(
-                                height: 18,
-                              ),
-                              Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 14),
-                                  child: const Text(
-                                    "Suggestions",
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                              const SizedBox(
-                                height: 18,
-                              ),
-                              Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 18),
-                                  child: ListView.separated(
-                                    shrinkWrap: true,
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    itemCount: state.actions.length,
-                                    itemBuilder: (context, index) =>
-                                        ClimateActionView(
-                                            action: state.actions[index]),
-                                    separatorBuilder:
-                                        (BuildContext context, int index) =>
-                                            const SizedBox(
-                                      height: 12,
-                                    ),
-                                  )),
-                              const SizedBox(
-                                height: 28,
-                              ),
-                              GridView(
-                                shrinkWrap: true,
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 14),
-                                physics: const NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 3,
-                                        childAspectRatio: 1.2),
-                                children: [
-                                  MoreActionView(
-                                      function: () {
-                                        context.navigate(const HeatmapScreen());
-                                      },
-                                      color: Colors.green,
-                                      icon: Icons.map,
-                                      title: "HeatMap \nAnalysis"),
-                                ],
+                              Text(
+                                "Charles!",
+                                style: TextStyle(
+                                    fontSize: 24, fontWeight: FontWeight.w600),
                               )
-                            ]))));
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 28,
+                          ),
+                          const Row(
+                            children: [
+                              Text("Your Carbon Footprint"),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Text(
+                                "40kgCO2",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 18,
+                          ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 14),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 4),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: Colors.grey[400]!),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                StatItemView(
+                                    title: "Food", icon: Icons.food_bank),
+                                StatItemView(
+                                    title: "Transport", icon: Icons.bus_alert),
+                                StatItemView(title: "Power", icon: Icons.power)
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 18,
+                          ),
+                          const BarChartHomeView(),
+                          const SizedBox(
+                            height: 18,
+                          ),
+                          Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 14),
+                              child: const Text(
+                                "Suggestions",
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              )),
+                          const SizedBox(
+                            height: 18,
+                          ),
+                          Container(
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 18),
+                              child: ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: state.actions.length,
+                                itemBuilder: (context, index) =>
+                                    ClimateActionView(
+                                        action: state.actions[index]),
+                                separatorBuilder:
+                                    (BuildContext context, int index) =>
+                                        const SizedBox(
+                                  height: 12,
+                                ),
+                              )),
+                          const SizedBox(
+                            height: 28,
+                          ),
+                          GridView(
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3, childAspectRatio: 1.2),
+                            children: [
+                              MoreActionView(
+                                  function: () {
+                                    context.navigate(const HeatmapScreen());
+                                  },
+                                  color: Colors.green,
+                                  icon: Icons.map,
+                                  title: "HeatMap \nAnalysis"),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          )
+                        ])));
           }
           if (state is HomeLoadingFailedState) Text(state.errorMessage);
           return const SizedBox();
