@@ -50,7 +50,7 @@ class _HeatmapScreenState extends State<HeatmapScreen> {
                           },
                           initialCameraPosition: const CameraPosition(
                             target: LatLng(37.7749, -122.4194),
-                            zoom: 10,
+                            zoom: 2,
                           ),
                           mapType: MapType.none,
                           // ignore: prefer_collection_literals
