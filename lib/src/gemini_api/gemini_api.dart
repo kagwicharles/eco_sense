@@ -22,8 +22,8 @@ class GeminiAPI {
     return response.text;
   }
 
-  Future<String?> responseFromTextAndImage(
-      String prompt, List<File> images) async {
+  Future<String?> responseFromTextAndImage(String prompt, List<File> images,
+      {GenerationConfig? genarationConfig}) async {
     List<Uint8List> imageByteData = [];
     List<DataPart> imageParts = [];
     for (var image in images) {

@@ -150,7 +150,7 @@ class _HomeNavViewState extends State<HomeNavView> {
                             children: [
                               MoreActionView(
                                   function: () {
-                                    context.navigate(const HeatmapScreen());
+                                    context.navigate(HeatMapScreen());
                                   },
                                   color: Colors.green,
                                   icon: Icons.map,

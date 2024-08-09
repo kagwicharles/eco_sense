@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:ecosense/src/gemini_api/gemini_api.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
@@ -25,6 +26,18 @@ class PromptRepository {
   Future<String?> learnMoreAboutClimateAction(String keywords) async {
     var res = await geminiAPI.responseFromTextOnly(
         "explain how $keywords would help reduce my carbon footprint",
+        genarationConfig: GenerationConfig(
+            responseMimeType: 'text/plain', responseSchema: Schema.string()));
+    if (res != null) {
+      return res;
+    }
+    return null;
+  }
+
+  Future<String?> getHeatmapAirQualityPrompt(List<File> images) async {
+    var res = await geminiAPI.responseFromTextAndImage(
+        "Based on the provided heatmap image, what is the level of air quality in a max of 10 words.",
+        images,
         genarationConfig: GenerationConfig(
             responseMimeType: 'text/plain', responseSchema: Schema.string()));
     if (res != null) {

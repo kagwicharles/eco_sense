@@ -9,7 +9,7 @@ class MapApiRepository {
   Future<Response?> getHeatMap() async {
     Response response;
     response = await dio.get(
-        'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/2/0/1?key=$apiKey',
+        'https://airquality.googleapis.com/v1/mapTypes/UAQI_RED_GREEN/heatmapTiles/2/0/1?key=$apiKey',
         options: Options(responseType: ResponseType.bytes));
 
     debugPrint("heatmap****************************${response.data}");
